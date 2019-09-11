@@ -233,13 +233,13 @@ public abstract class AbstractRemoteActionCache implements AutoCloseable {
       } catch (IOException e) {
         if (downloadException == null) {
           downloadException = e;
-        } else {
+        } else if (e != downloadException) {
           downloadException.addSuppressed(e);
         }
       } catch (InterruptedException e) {
         if (interruptedException == null) {
           interruptedException = e;
-        } else {
+        } else if (e != interruptedException) {
           interruptedException.addSuppressed(e);
         }
       }
